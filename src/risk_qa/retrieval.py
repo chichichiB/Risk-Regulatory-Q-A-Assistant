@@ -6,7 +6,9 @@ from risk_qa.sparse import SparseIndex, tokenize
 
 def reciprocal_rank_fusion(rankings: dict[str, list[EvidencePassage]],
                            release_id: str) -> list[EvidencePassage]:
-    found, scores, traces = {}, {}, {}
+    found: dict[str, EvidencePassage] = {}
+    scores: dict[str, float] = {}
+    traces: dict[str, dict[str, float]] = {}
     for channel, ranked in rankings.items():
         seen = set()
         for rank, p in enumerate(ranked, 1):

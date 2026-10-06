@@ -1,0 +1,118 @@
+{
+  "corpus_release": "fa82be6139b9eb4af71bce55",
+  "reviewer": "AI agent visual layout review; not a human regulatory audit",
+  "method": "Rendered all 13 flagged physical pages with Poppler; inspected their single-column text, metadata rows and numbered footnotes. Also inspected B-10 p5 and SRP30 p12 at larger scale. Compared to extracted text.",
+  "disposition": "Retain page text. No flagged page needs OCR or table reconstruction for this fixed corpus. The heuristic flags indentation, not confirmed data tables. Flags alone do not block chunking.",
+  "known_artifacts": [
+    "B-10 p5 and other source pages contain literal HTML link markup in the official PDF rendition; retained verbatim for offset provenance.",
+    "Basel PDF includes typographic ligatures and footnotes; canonical extraction is preserved.",
+    "Basel PDF generation label reads 07/10/2026 while retrieval timestamp and corpus reference are 2026-10-06; generated date is not the in-force date (2019-12-15).",
+    "Review checked layout and extraction spot samples, not every statement or legal applicability."
+  ],
+  "pages": [
+    {
+      "doc_id": "osfi-e21",
+      "pdf_page_index": 1,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    },
+    {
+      "doc_id": "osfi-b10",
+      "pdf_page_index": 1,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    },
+    {
+      "doc_id": "osfi-b13",
+      "pdf_page_index": 1,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    },
+    {
+      "doc_id": "osfi-b13",
+      "pdf_page_index": 24,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    },
+    {
+      "doc_id": "osfi-cg",
+      "pdf_page_index": 1,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    },
+    {
+      "doc_id": "osfi-cg",
+      "pdf_page_index": 19,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    },
+    {
+      "doc_id": "osfi-cg",
+      "pdf_page_index": 20,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    },
+    {
+      "doc_id": "basel-srp30",
+      "pdf_page_index": 3,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    },
+    {
+      "doc_id": "basel-srp30",
+      "pdf_page_index": 5,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    },
+    {
+      "doc_id": "basel-srp30",
+      "pdf_page_index": 7,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    },
+    {
+      "doc_id": "basel-srp30",
+      "pdf_page_index": 11,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    },
+    {
+      "doc_id": "basel-srp30",
+      "pdf_page_index": 13,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    },
+    {
+      "doc_id": "basel-srp30",
+      "pdf_page_index": 14,
+      "flags": [
+        "possible_table_or_columns"
+      ],
+      "decision": "retain: metadata or numbered footnote indentation in single-column layout"
+    }
+  ]
+}

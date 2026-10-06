@@ -4,8 +4,9 @@ import json
 import threading
 import time
 from decimal import Decimal
-from typing import Literal
+from typing import Literal, cast
 
+from openai.types.responses import ResponseInputParam
 from pydantic import BaseModel, ConfigDict
 
 from risk_qa.contracts import Claim, ClaimVerdict
@@ -105,7 +106,7 @@ class LLMClient:
         self.client = OpenAI(api_key=settings.openai_api_key.get_secret_value(), max_retries=0,
                              timeout=settings.provider_timeout_seconds)
         self.deadline = time.monotonic() + settings.request_timeout_seconds
-        self.usage = []
+        self.usage: list[dict[str, str | int]] = []
 
     def complete(self, schema: type[BaseModel], messages: list[dict[str, str]],
                  max_output_tokens: int) -> BaseModel:
@@ -116,7 +117,7 @@ class LLMClient:
         byte_count = len(json.dumps([messages, schema.model_json_schema()]).encode("utf-8")) + 1000
         reserved = self.budget.reserve(byte_count, max_output_tokens)
         response = self.client.responses.parse(
-            model=self.settings.openai_model, input=messages, text_format=schema,
+            model=self.settings.openai_model, input=cast(ResponseInputParam, messages), text_format=schema,
             max_output_tokens=max_output_tokens, store=False,
             timeout=min(remaining, self.settings.provider_timeout_seconds),
         )

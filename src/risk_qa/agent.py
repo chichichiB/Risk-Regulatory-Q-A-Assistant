@@ -11,7 +11,7 @@ from langgraph.graph import END, START, StateGraph
 
 from risk_qa import prompts
 from risk_qa.citations import render_verified, verify_claims
-from risk_qa.contracts import AnswerResult, AskRequest, InputValidationError, ReadinessReport
+from risk_qa.contracts import AnswerResult, AskRequest, ReadinessReport
 from risk_qa.llm import DraftAnswer, EvidenceGrade, QueryRewrite, RouteDecision, SemanticVerdicts
 
 
@@ -56,10 +56,10 @@ class AnswerService:
             if time.monotonic() >= deadline:
                 raise TimeoutError("Request deadline reached")
 
+        limits = getattr(getattr(self.retriever, "embedder", None), "limits", None)
+        if limits:
+            limits.validate_query(request.question)
         try:
-            limits = getattr(getattr(self.retriever, "embedder", None), "limits", None)
-            if limits:
-                limits.validate_query(request.question)
             llm = self.llm_factory()
 
             def call(schema, instruction, state):
@@ -164,7 +164,5 @@ class AnswerService:
                               answer_text=render_verified(final["report"]),
                               citations=[p for p in final["evidence"] if p.passage_id in ids])
             return result(final["status"], final.get("reason"))
-        except InputValidationError:
-            raise
         except Exception:
             return result("service_error", "A dependency, output validation, timeout or configured budget prevented completion.")

@@ -1,6 +1,7 @@
 """Deterministic sparse ranking over one immutable corpus release."""
 
 import re
+from typing import Any
 
 from rank_bm25 import BM25Okapi
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -17,7 +18,7 @@ class SparseIndex:
         if any(p.release_id != release_id for p in passages):
             raise ValueError("Sparse index cannot mix releases")
         self.passages, self.release_id, self.mode = passages, release_id, mode
-        self._indexes = {}
+        self._indexes: dict[str | None, tuple[list[EvidencePassage], Any, Any]] = {}
 
     def search(self, query: str, release_id: str, authority: str | None,
                limit: int) -> list[EvidencePassage]:

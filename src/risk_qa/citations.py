@@ -22,7 +22,7 @@ def verify_claims(claims: list[Claim], evidence: list[EvidencePassage],
     if sorted(indices) != list(range(len(claims))):
         errors.append("Exactly one semantic verdict is required for every claim")
     judgments = {v.claim_index: v for v in semantic_verdicts}
-    used_authorities = set()
+    used_authorities: set[str] = set()
     for i, claim in enumerate(claims):
         ids = set(claim.citation_ids)
         if not ids or not ids.issubset(allowed):
