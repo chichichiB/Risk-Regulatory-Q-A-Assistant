@@ -1,6 +1,5 @@
 """Index a verified frozen release. Never called implicitly by API startup."""
 
-from pathlib import Path
 
 from risk_qa.config import Settings
 from risk_qa.corpus import chunk_pages, extract_pages, load_manifest

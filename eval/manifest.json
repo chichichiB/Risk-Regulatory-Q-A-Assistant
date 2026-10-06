@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "frozen_before_first_benchmark_run": true,
+  "corpus_release": "fa82be6139b9eb4af71bce55",
+  "human_audit_count": 0,
+  "note": "AI-authored evidence labels. Known sufficient support sets, not an exhaustive relevance judgment over all pages. No retrieval tuning on benchmark.",
+  "datasets": {
+    "dev.jsonl": {
+      "sha256": "14753aa6fa44d65a1de7ca73ecc173a23c850ea983e0922ecc8e8ba741cb104a",
+      "items": 15,
+      "answerable": 15
+    },
+    "benchmark.jsonl": {
+      "sha256": "914d4af83b8876ee2758f4d63ada858fb6cd02f04b9aacf3dcbd062f5bd0cc13",
+      "items": 50,
+      "answerable": 40
+    }
+  }
+}

@@ -17,7 +17,13 @@ class ScriptedLLM:
         self.fail = fail
 
     def complete(self, schema, messages, max_output_tokens):
-        from risk_qa.llm import DraftAnswer, EvidenceGrade, QueryRewrite, RouteDecision, SemanticVerdicts
+        from risk_qa.llm import (
+            DraftAnswer,
+            EvidenceGrade,
+            QueryRewrite,
+            RouteDecision,
+            SemanticVerdicts,
+        )
 
         self.calls.append((schema.__name__, messages))
         if self.fail:

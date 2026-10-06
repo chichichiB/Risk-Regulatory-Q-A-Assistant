@@ -1,6 +1,12 @@
 """Code-enforced citation boundaries, separate from fallible semantic judgments."""
 
-from risk_qa.contracts import Claim, ClaimVerdict, EvidencePassage, VerificationReport, format_claims
+from risk_qa.contracts import (
+    Claim,
+    ClaimVerdict,
+    EvidencePassage,
+    VerificationReport,
+    format_claims,
+)
 
 
 def verify_claims(claims: list[Claim], evidence: list[EvidencePassage],
