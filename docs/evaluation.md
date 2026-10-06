@@ -1,6 +1,6 @@
 # Evaluation guide
 
-This guide separates measured retrieval from unmeasured answer quality. The frozen corpus release is `fa82be6139b9eb4af71bce55`, with five official PDF snapshots, 110 pages and 181 chunks. The held-out dataset hash is in [eval/manifest.json](../eval/manifest.json). Preserve the exact gitignored PDF snapshots; a later generated PDF from the same official URL may have different bytes and must fail the manifest hash check rather than silently replace the evaluation corpus.
+This guide separates measured retrieval, a five-question live smoke check, and the completed frozen answer benchmark. The frozen corpus release is `fa82be6139b9eb4af71bce55`, with five official PDF snapshots, 110 pages and 181 chunks. The held-out dataset hash is in [eval/manifest.json](../eval/manifest.json). Preserve the exact gitignored PDF snapshots; a later generated PDF from the same official URL may have different bytes and must fail the manifest hash check rather than silently replace the evaluation corpus.
 
 ## Labeled sets and what the labels mean
 
@@ -51,19 +51,36 @@ Answer evaluation is a **separate paid run**. It requires a local `OPENAI_API_KE
 python -m scripts.evaluate --mode answers --allow-paid
 ```
 
-The agent may rewrite a query once and repair an answer once, with at most eight provider attempts per question and SDK implicit retries disabled. The budget ledger reserves an upper-bound cost before a call and is **process-local**, so restart resets it; use one API worker and an external account limit. The evaluation stores provider attempts, usage, latency and errors. No paid run or answer metric has been reported yet.
+The agent may rewrite a query once and repair an answer once, with at most eight provider attempts per question and SDK implicit retries disabled. The budget ledger reserves an upper-bound cost before a call and is **process-local**, so restart resets it; use one API worker and an external account limit. The evaluation stores provider attempts, usage, latency and errors. A [live smoke check](reports/development-smoke-run.json) of five **development** questions, one per source, answered all five with structurally valid citations using 20 provider calls and a **token-based cost estimate** of US$0.0146208 at configured standard rates. The estimator does not apply cached-input discounts or confirm account billing. The smoke check does not score reference-answer correctness or independently establish factual support. No application, prompt, dataset or model changes were made between this smoke check and the frozen benchmark; there was no rerun selection.
 
 `score_answers` records attempted queries, service errors, answered queries, refusals, answer coverage on positives, exact expected-status accuracy on negatives, claim count and judgment coverage. Service errors remain in attempted counts and are not credited as correct refusals. For answered responses, `citation_validity` in the summary is the fraction of claims with nonempty citation IDs found among returned passages from the same release. This is a **structural membership check**, not semantic citation validity; the agent's verifier also checks its own evidence boundary before release.
 
-The evaluator makes a separate call to the **same configured OpenAI model** for claim verdicts. `claim_faithfulness = supported judged claims / assessed claims`, where a verdict counts as supported only if its supporting IDs match the claim's citation IDs. `judgment_coverage = assessed claims / returned claims`. A zero denominator yields `null`. This is a **same-model judge-assisted estimate over supplied claim units**, not independent validation. Human audit count is currently zero. A defensible factual accuracy claim requires human review of sampled answer claims and source spans, including qualifiers, dates, negations and authority. Refusals are outside the claim denominator, so answer coverage and negative-status accuracy must accompany any faithfulness rate.
+The evaluator makes a separate call to the **same configured OpenAI model** for claim verdicts. `claim_faithfulness = supported judged claims / assessed claims`, where a verdict counts as supported only if its supporting IDs match the claim's citation IDs. `judgment_coverage = assessed claims / returned claims`. A zero denominator yields `null`. This is a **same-model judge-assisted estimate over supplied claim units**, not independent validation. Human audit count is currently zero. A defensible factual accuracy claim requires human review of sampled answer claims and source spans, including qualifiers, dates, negations and authority. Refusals are outside the claim denominator, so answer coverage on positives and **exact expected-status accuracy** on the 10 negatives must accompany any faithfulness rate. The runner does not calculate reference-answer correctness.
+
+## Frozen answer result
+
+The completed [portable run summary](reports/answer-run.json) and [per-question records](reports/answer-predictions.jsonl) come from `reports/20261006T233511Z-answers-8ac717` at clean application commit `8f1efc96f7183e151a6c56c6415265cf5597a32b`, using `gpt-4.1-mini-2025-04-14` and the same frozen dataset. The portable predictions omit passage text but retain IDs and page offsets to resolve against the preserved corpus.
+
+| Measure | Observed result | Boundary |
+| --- | ---: | --- |
+| Attempted / service errors | 50 / 0 | All benchmark items were attempted. |
+| Answerable answered | 38/40 (95%) | Two answerable questions were wrongly refused. |
+| Negative questions declined | 10/10 | Declining alone does not mean the status was correct. |
+| Exact expected negative status | 8/10 (80%) | Two `insufficient_evidence` labels received `out_of_scope`. |
+| Structural citation membership | 105/105 claims | Current-release returned passage IDs; not semantic truth. |
+| Same-model separate-call support estimate | 105/105 assessed claim units | Judgment coverage 105/105; zero human audits. |
+
+The four observed routing mismatches are preserved: `benchmark-osfi-b13-07` expected `answered` but returned `ambiguous_version` after asserting an unsupported 2024 corpus cutoff; `benchmark-osfi-cg-05` expected `answered` but returned `out_of_scope` for a Corporate Governance CRO independence/pay question; `benchmark-negative-05` and `benchmark-negative-06` expected `insufficient_evidence` but returned `out_of_scope`. The latter two were refusals with the wrong reason. These failures motivate a separately authored routing challenge set, **not tuning on or relabeling this frozen 50**.
+
+The benchmark made 200 provider calls; observed-token **cost estimate** was US$0.1621644 at configured standard rates, with no cached-input discount or reconciliation to account billing. Smoke plus benchmark used 220 calls and an estimated US$0.1767852. The benchmark's mean per-question latency was 7.87 seconds and nearest-rank p95 was 14.33 seconds on this machine, including separate judge calls. No reference-answer correctness score or human factual audit was performed. The `105/105` judge value must not be called 100% answer accuracy.
 
 ## Reproduction and verification tiers
 
 1. **Offline:** `python -m pytest tests/unit -q` uses fixtures and fake services, with no key, model download or database. At the latest reported checkpoint, 40 tests passed.
 2. **Real local components:** explicit integration tests exercise pinned Hugging Face embeddings/reranking and disposable PostgreSQL/pgvector. Real ingestion and reranking tests passed locally. The frozen retrieval run above belongs to this tier.
-3. **Paid end-to-end:** only the opt-in answer command above, after key, model, pricing and spend cap are configured. It has not run and must not be inferred from retrieval scores.
+3. **Paid end-to-end:** the opt-in answer command above requires local key, model, pricing and spend cap. Five development questions completed as a live smoke check, followed by the held-out 50-question run reported above. Neither result may be inferred from retrieval scores. The separate `tests/integration/test_agent_live.py` pytest file has not been run and is not covered by these run claims.
 
-For each reported result, retain the run directory's `run.json` and per-question predictions, the preserved PDF archive, the dataset hash and exact code commit. Distinguish local passes from Docker-build and remote-CI results; Docker build and the local HTTP smoke test passed; [remote CI passed](https://github.com/chichichiB/Risk-Regulatory-Q-A-Assistant/actions/runs/37542136078) for commit `6bc150a`. Never commit raw PDFs, model cache, `.env`, API keys or unreviewed paid outputs by accident.
+For each reported result, retain the run directory's `run.json` and per-question predictions, the preserved PDF archive, the dataset hash and exact code commit. Distinguish local passes from Docker-build and remote-CI results; Docker build and the local HTTP smoke test passed; [remote CI passed](https://github.com/chichichiB/Risk-Regulatory-Q-A-Assistant/actions/runs/37546511817) for main commit `8f1efc9`. Never commit raw PDFs, model cache, `.env`, API keys or unreviewed paid outputs by accident.
 
 ## Measurement boundaries
 
