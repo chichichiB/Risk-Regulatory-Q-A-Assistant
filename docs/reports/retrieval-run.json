@@ -1,0 +1,98 @@
+{
+  "run_kind": "real-component-retrieval",
+  "started_at": "2026-10-06T22:23:37.413693+00:00",
+  "dataset": "eval\\benchmark.jsonl",
+  "dataset_sha256": "914d4af83b8876ee2758f4d63ada858fb6cd02f04b9aacf3dcbd062f5bd0cc13",
+  "corpus_release": "fa82be6139b9eb4af71bce55",
+  "git_commit": "3cf92aba3ee8bfad40eb281730bb15124f8ffbe8",
+  "git_dirty": false,
+  "lock_sha256": "632d62434a6d57749c0f52cfbb99f02090567edf070e70651fe25ef1373fb962",
+  "model_manifest": {
+    "embedding": {
+      "id": "BAAI/bge-small-en-v1.5",
+      "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a"
+    },
+    "reranker": {
+      "id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a"
+    }
+  },
+  "prompt_version": "regulatory-evidence-v1",
+  "prompt_sha256": "3d5966708bdbd9aaebf9492fce3c9685f06b78605b5d0e0c74751977a99fd6d7",
+  "python": "3.12.15",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "torch": "2.14.1+cpu",
+    "transformers": "5.19.0",
+    "sentence-transformers": "5.7.0",
+    "langgraph": "1.2.14",
+    "openai": "2.54.0",
+    "pgvector": "0.5.0"
+  },
+  "config": {
+    "top_k_chunks": 5,
+    "channel_candidates": 20,
+    "rerank_candidates": 30,
+    "rrf_constant": 60,
+    "query_rewriting": false,
+    "authority_source": "gold labels",
+    "max_provider_calls": 8,
+    "max_output_tokens": 1500,
+    "max_run_usd": "0"
+  },
+  "label_human_audit_count": 0,
+  "summary": {
+    "dense": {
+      "answerable_queries": 40,
+      "page_recall_at_5": 0.95,
+      "hit_at_5": 0.95,
+      "complete_page_coverage_at_5": 0.95,
+      "complete_evidence_at_5": 0.95,
+      "retrieval_errors": 0,
+      "error_item_ids": [],
+      "mean_latency_seconds": 0.04252600246691145
+    },
+    "bm25": {
+      "answerable_queries": 40,
+      "page_recall_at_5": 0.95,
+      "hit_at_5": 0.95,
+      "complete_page_coverage_at_5": 0.95,
+      "complete_evidence_at_5": 0.95,
+      "retrieval_errors": 0,
+      "error_item_ids": [],
+      "mean_latency_seconds": 0.0004975699936039746
+    },
+    "tfidf": {
+      "answerable_queries": 40,
+      "page_recall_at_5": 0.95,
+      "hit_at_5": 0.95,
+      "complete_page_coverage_at_5": 0.95,
+      "complete_evidence_at_5": 0.95,
+      "retrieval_errors": 0,
+      "error_item_ids": [],
+      "mean_latency_seconds": 0.002071324991993606
+    },
+    "hybrid": {
+      "answerable_queries": 40,
+      "page_recall_at_5": 0.975,
+      "hit_at_5": 0.975,
+      "complete_page_coverage_at_5": 0.975,
+      "complete_evidence_at_5": 0.975,
+      "retrieval_errors": 0,
+      "error_item_ids": [],
+      "mean_latency_seconds": 0.04049633251852356
+    },
+    "reranked": {
+      "answerable_queries": 40,
+      "page_recall_at_5": 1.0,
+      "hit_at_5": 1.0,
+      "complete_page_coverage_at_5": 1.0,
+      "complete_evidence_at_5": 1.0,
+      "retrieval_errors": 0,
+      "error_item_ids": [],
+      "mean_latency_seconds": 0.6440584474941715
+    }
+  },
+  "duration_seconds": 29.236212299903855,
+  "completed_at": "2026-10-06T22:24:06.772360+00:00"
+}
