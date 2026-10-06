@@ -26,7 +26,7 @@ packages = ["src/risk_qa"]
 [tool.pytest.ini_options]
 testpaths = ["tests/unit"]
 pythonpath = ["src", "."]
-addopts = "--basetemp=.pytest_cache/tmp"
+addopts = "--basetemp=.pytest_tmp"
 markers = ["integration: needs explicit real component configuration", "live: uses paid API calls"]
 
 [tool.ruff]
