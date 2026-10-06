@@ -12,7 +12,7 @@ Local verification on 6 October 2026 used Python 3.12.15 and CPU models.
 | Frozen retrieval benchmark | 40 positive questions, five variants, zero errors; [run record](reports/retrieval-run.json) |
 | Docker build | Passed locally |
 | Docker HTTP smoke | Passed; dependencies loaded and `/ready` correctly reported missing paid configuration |
-| Remote GitHub Actions | Configured, not run; branch has not been pushed |
+| Remote GitHub Actions | [Passed](https://github.com/chichichiB/Risk-Regulatory-Q-A-Assistant/actions/runs/37542136078) on commit `6bc150a`: offline validation and Docker build |
 | Live OpenAI | Not run; key/model/prices/spend approval pending |
 | Human audit | None |
 

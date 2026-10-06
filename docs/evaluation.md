@@ -63,7 +63,7 @@ The evaluator makes a separate call to the **same configured OpenAI model** for 
 2. **Real local components:** explicit integration tests exercise pinned Hugging Face embeddings/reranking and disposable PostgreSQL/pgvector. Real ingestion and reranking tests passed locally. The frozen retrieval run above belongs to this tier.
 3. **Paid end-to-end:** only the opt-in answer command above, after key, model, pricing and spend cap are configured. It has not run and must not be inferred from retrieval scores.
 
-For each reported result, retain the run directory's `run.json` and per-question predictions, the preserved PDF archive, the dataset hash and exact code commit. Distinguish local passes from Docker-build and remote-CI results; Docker build and the local HTTP smoke test passed; remote CI has not run. Never commit raw PDFs, model cache, `.env`, API keys or unreviewed paid outputs by accident.
+For each reported result, retain the run directory's `run.json` and per-question predictions, the preserved PDF archive, the dataset hash and exact code commit. Distinguish local passes from Docker-build and remote-CI results; Docker build and the local HTTP smoke test passed; [remote CI passed](https://github.com/chichichiB/Risk-Regulatory-Q-A-Assistant/actions/runs/37542136078) for commit `6bc150a`. Never commit raw PDFs, model cache, `.env`, API keys or unreviewed paid outputs by accident.
 
 ## Measurement boundaries
 

@@ -10,7 +10,7 @@
 
 **Spec:** `docs/design.md` in the target repository (`work/repository/docs/design.md` in this workspace). Read the approved spec before implementation and use its details when a task below refers to a policy.
 
-**Status:** Implemented and locally verified, 6 October 2026. See docs/verification.md for measured checks. Paid OpenAI validation and remote CI remain unrun; neither is implied by completed local implementation steps.
+**Status:** Implemented and locally verified, 6 October 2026. See docs/verification.md for measured checks. Remote CI passed offline validation and Docker build on commit `6bc150a`; paid OpenAI validation remains unrun.
 
 ## Global constraints
 
@@ -164,4 +164,4 @@ The owning task implements these signatures; Task 1 does not create empty functi
 
 Tasks 1–3 implement immutable provenance and corpus release; Task 4 implements hybrid retrieval and reranking; Tasks 5–6 implement citation/claim checks, refusal, routing and provider budgets; Task 7 implements the local API; Task 8 implements the frozen evaluation and honest metric labels; Task 9 implements reproducibility and CI. The five Review Focus cases each have a named failing-test gate above. Each commit is a reviewable boundary; any changes to shared contracts require updating consuming tasks' tests in the same commit.
 
-The user approved this plan and native execution. Local implementation and the independent whole-branch review are complete. Conditional paid checks were not run because API setup and spending authorization are pending. Remote publication is a separate final integration choice. Reference-answer correctness and per-category answer aggregates are deferred; the delivered evaluation documents this limitation explicitly.
+The user approved this plan and native execution. Local implementation and the independent whole-branch review are complete. Conditional paid checks were not run because API setup and spending authorization are pending. The user authorized publication: branch `feat/regulatory-rag` is pushed and PR #1 is open against `main`. Reference-answer correctness and per-category answer aggregates are deferred; the delivered evaluation documents this limitation explicitly.

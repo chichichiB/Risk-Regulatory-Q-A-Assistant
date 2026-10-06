@@ -76,7 +76,7 @@ The run recorded zero retrieval errors. Page hit and complete-page coverage had 
 
 ## Verification and scope
 
-At the latest reported checkpoint, **40 offline unit tests passed**, and real pgvector ingestion plus Hugging Face reranking integration checks passed. Docker build and API smoke tests passed locally. The CI workflow is configured; remote CI and paid end-to-end tests have not run. Offline tests use fixtures/mocks and need no key, model download or database:
+At the latest reported checkpoint, **40 offline unit tests passed**, and real pgvector ingestion plus Hugging Face reranking integration checks passed. Docker build and API smoke tests passed locally. [GitHub Actions](https://github.com/chichichiB/Risk-Regulatory-Q-A-Assistant/actions/runs/37542136078) passed offline validation and the Docker build for commit `6bc150a`. Paid end-to-end tests have not run. Offline tests use fixtures/mocks and need no key, model download or database:
 
 ```bash
 python -m pytest tests/unit -q
