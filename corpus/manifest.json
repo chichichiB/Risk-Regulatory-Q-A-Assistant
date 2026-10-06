@@ -1,0 +1,88 @@
+{
+  "release_id": "fa82be6139b9eb4af71bce55",
+  "reference_date": "2026-10-06",
+  "sources": [
+    {
+      "doc_id": "osfi-e21",
+      "title": "Operational Risk Management and Resilience",
+      "authority": "OSFI",
+      "source_url": "https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/operational-risk-management-resilience-guideline",
+      "pdf_url": "https://www.osfi-bsif.gc.ca/en/print/pdf/node/2332",
+      "sha256": "7742aeeffb754d295306575614816d93c7fe113ed006f890445a27a357a682cb",
+      "page_count": 21,
+      "retrieved_at": "2026-10-06T22:03:46.159627+00:00",
+      "published_at": null,
+      "effective_from": null,
+      "effective_to": null,
+      "language": "en",
+      "status": "final"
+    },
+    {
+      "doc_id": "osfi-b10",
+      "title": "Third-Party Risk Management",
+      "authority": "OSFI",
+      "source_url": "https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/third-party-risk-management-guideline",
+      "pdf_url": "https://www.osfi-bsif.gc.ca/en/print/pdf/node/567",
+      "sha256": "21ebc825b6f7bb387fcbba6933ebea5a4a80637768bbf6ebd20bb09ff4df4b29",
+      "page_count": 30,
+      "retrieved_at": "2026-10-06T22:03:46.163628+00:00",
+      "published_at": null,
+      "effective_from": null,
+      "effective_to": null,
+      "language": "en",
+      "status": "final"
+    },
+    {
+      "doc_id": "osfi-b13",
+      "title": "Technology and Cyber Risk Management",
+      "authority": "OSFI",
+      "source_url": "https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/technology-cyber-risk-management",
+      "pdf_url": "https://www.osfi-bsif.gc.ca/en/print/pdf/node/570",
+      "sha256": "596f3f39cf91093fcd17182cd0fa180485ee92f07242af2d7e48b8c12e474f39",
+      "page_count": 24,
+      "retrieved_at": "2026-10-06T22:03:46.166134+00:00",
+      "published_at": null,
+      "effective_from": null,
+      "effective_to": null,
+      "language": "en",
+      "status": "final"
+    },
+    {
+      "doc_id": "osfi-cg",
+      "title": "Corporate Governance",
+      "authority": "OSFI",
+      "source_url": "https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/corporate-governance-guideline-2018",
+      "pdf_url": "https://www.osfi-bsif.gc.ca/en/print/pdf/node/592",
+      "sha256": "b2234f5402d395adb86e2d65f4dbe76e1c48d40d99b37cec74baef90d58e05f4",
+      "page_count": 20,
+      "retrieved_at": "2026-10-06T22:03:46.168137+00:00",
+      "published_at": null,
+      "effective_from": null,
+      "effective_to": null,
+      "language": "en",
+      "status": "final"
+    },
+    {
+      "doc_id": "basel-srp30",
+      "title": "Basel Framework SRP30 Risk Management",
+      "authority": "BCBS",
+      "source_url": "https://www.bis.org/committees/bcbs/basel-framework/standard/srp/30/inforce/2019-12-15/published/2019-12-15",
+      "pdf_url": "https://www.bis.org/committees/bcbs/basel-framework/81535/chapter.pdf",
+      "sha256": "15118d5fdc504930756c79a118f51aa3988f27589ac12de435677b6b544c1415",
+      "page_count": 15,
+      "retrieved_at": "2026-10-06T22:03:46.170137+00:00",
+      "published_at": null,
+      "effective_from": "2019-12-15",
+      "effective_to": null,
+      "language": "en",
+      "status": "final"
+    }
+  ],
+  "extraction_version": "pypdf-6.19.0-layout-v1",
+  "chunk_tokens": 320,
+  "overlap_tokens": 40,
+  "model_revisions": {
+    "embedding": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "reranker": "233902d25c440f23af6f7d6e94d2946bac0bee0a"
+  }
+}

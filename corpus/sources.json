@@ -1,0 +1,47 @@
+{
+  "inspected_on": "2026-10-06",
+  "status": "Official PDF URLs inspected through web tools; bytes not yet downloaded, hashed, or ingested locally.",
+  "documents": [
+    {
+      "id": "osfi-e21",
+      "title": "Operational Risk Management and Resilience",
+      "authority": "OSFI",
+      "source_url": "https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/operational-risk-management-resilience-guideline",
+      "pdf_url": "https://www.osfi-bsif.gc.ca/en/print/pdf/node/2332",
+      "observed_pages": 21
+    },
+    {
+      "id": "osfi-b10",
+      "title": "Third-Party Risk Management",
+      "authority": "OSFI",
+      "source_url": "https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/third-party-risk-management-guideline",
+      "pdf_url": "https://www.osfi-bsif.gc.ca/en/print/pdf/node/567",
+      "observed_pages": 30
+    },
+    {
+      "id": "osfi-b13",
+      "title": "Technology and Cyber Risk Management",
+      "authority": "OSFI",
+      "source_url": "https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/technology-cyber-risk-management",
+      "pdf_url": "https://www.osfi-bsif.gc.ca/en/print/pdf/node/570",
+      "observed_pages": 24
+    },
+    {
+      "id": "osfi-cg",
+      "title": "Corporate Governance",
+      "authority": "OSFI",
+      "source_url": "https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/corporate-governance-guideline-2018",
+      "pdf_url": "https://www.osfi-bsif.gc.ca/en/print/pdf/node/592",
+      "observed_pages": 20
+    },
+    {
+      "id": "basel-srp30",
+      "title": "Basel Framework SRP30 Risk Management",
+      "authority": "BCBS",
+      "source_url": "https://www.bis.org/committees/bcbs/basel-framework/standard/srp/30/inforce/2019-12-15/published/2019-12-15",
+      "pdf_url": "https://www.bis.org/committees/bcbs/basel-framework/81535/chapter.pdf",
+      "observed_pages": 15,
+      "effective_from": "2019-12-15"
+    }
+  ]
+}
