@@ -1,6 +1,6 @@
 # Interview guide: design choices, evidence and limits
 
-This guide explains the engineering decisions in the Risk Regulatory Q&A Assistant. It separates implemented behavior and measured retrieval from answer-quality claims that still require an authorized paid run and human review.
+This guide explains the engineering decisions in the Risk Regulatory Q&A Assistant. It separates measured retrieval, the five-question live smoke, and the completed held-out answer benchmark from the human review still needed for factual claims.
 
 ## What problem does the project solve?
 
@@ -34,7 +34,9 @@ The 15 development questions are separate from the frozen 50-item benchmark. Of 
 
 Page recall@5 means coverage of the **annotated known sufficient support set** in the pages of the first five chunks; it is not a census of every relevant page in all regulations. Hit@5 asks only whether one support page was found. Complete-page-coverage@5 asks whether all pages of a sufficient support path were found. Complete-evidence@5 goes further: it checks whether the retrieved chunks' actual character intervals cover every labeled support span. None of these proves the final answer's claims are entailed by the sources. The reported 100% reranked retrieval is 40/40 on this limited AI-authored benchmark, not an answer-faithfulness result or broad performance guarantee.
 
-The paid answer run has **not** been executed. It requires a local key, chosen OpenAI model, current input/output prices, a positive `MAX_RUN_USD`, and explicit `--mode answers --allow-paid`. Refusal accuracy, answer coverage and same-model judge-assisted claim faithfulness remain unmeasured. Human audit coverage is zero. A future result should publish both rate and denominator; undefined rates are `null`, and service errors stay visible in attempted-query counts.
+A live smoke check answered five development questions, one per source, with structurally valid citations; it used 20 provider calls and a token-based cost estimate of US$0.0146208. The subsequent frozen 50-question run attempted every item with zero service errors: 38/40 answerable items were answered (95% coverage), all 10 negatives were declined, and 8/10 negatives received the **exact expected status**. Two answerable questions were falsely refused: B-13 data classification/monitoring was routed to `ambiguous_version` with an invented 2024 cutoff, and a Corporate Governance CRO independence/pay question was routed `out_of_scope`. Two negatives expected `insufficient_evidence` but received `out_of_scope`. These four routing failures remain in the frozen result; a new independently authored routing challenge set is a better next test than tuning on these same 50 questions.
+
+The benchmark's 105 returned claim units had structural citation membership (105/105); a separate call to the **same model** marked all 105 supported, with judgment coverage 105/105. That is a judge-assisted estimate over model-supplied claims, **not human-verified 100% answer correctness**. The runner does not score reference-answer correctness, and human audit coverage is zero. The 200 benchmark provider calls had an observed-token cost estimate of US$0.1621644; smoke plus benchmark totaled 220 calls and an estimated US$0.1767852 at configured standard rates. Cached-input discounts are not applied and account billing is not confirmed. Undefined rates are `null`, and service errors remain visible in attempted-query counts.
 
 ## How can someone run or extend it?
 

@@ -1,0 +1,148 @@
+{
+  "run_kind": "five-document-development-smoke",
+  "status": "completed",
+  "started_at": "2026-10-06T23:34:02.352641+00:00",
+  "corpus_release": "fa82be6139b9eb4af71bce55",
+  "git_commit": "8f1efc96f7183e151a6c56c6415265cf5597a32b",
+  "dataset_sha256": "14753aa6fa44d65a1de7ca73ecc173a23c850ea983e0922ecc8e8ba741cb104a",
+  "selected_item_ids": [
+    "dev-osfi-e21-09",
+    "dev-osfi-b10-09",
+    "dev-osfi-b13-09",
+    "dev-osfi-cg-09",
+    "dev-basel-srp30-09"
+  ],
+  "openai_model": "gpt-4.1-mini-2025-04-14",
+  "maximum_usd": "2",
+  "pricing_usd_per_million": {
+    "input": "0.40",
+    "output": "1.60"
+  },
+  "spend_including_unknown_usage_reservations_usd": "0.0146208",
+  "usage": [
+    {
+      "input_tokens": 284,
+      "output_tokens": 48,
+      "cost_usd": "0.0001904",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 2908,
+      "output_tokens": 95,
+      "cost_usd": "0.0013152",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 831,
+      "output_tokens": 59,
+      "cost_usd": "0.0004268",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 953,
+      "output_tokens": 94,
+      "cost_usd": "0.0005316",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 290,
+      "output_tokens": 44,
+      "cost_usd": "0.0001864",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 2741,
+      "output_tokens": 133,
+      "cost_usd": "0.0013092",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 793,
+      "output_tokens": 54,
+      "cost_usd": "0.0004036",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 910,
+      "output_tokens": 129,
+      "cost_usd": "0.0005704",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 288,
+      "output_tokens": 73,
+      "cost_usd": "0.000232",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 2649,
+      "output_tokens": 138,
+      "cost_usd": "0.0012804",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 841,
+      "output_tokens": 57,
+      "cost_usd": "0.0004276",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 961,
+      "output_tokens": 77,
+      "cost_usd": "0.0005076",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 285,
+      "output_tokens": 44,
+      "cost_usd": "0.0001844",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 3066,
+      "output_tokens": 145,
+      "cost_usd": "0.0014584",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 1372,
+      "output_tokens": 76,
+      "cost_usd": "0.0006704",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 1511,
+      "output_tokens": 102,
+      "cost_usd": "0.0007676",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 285,
+      "output_tokens": 58,
+      "cost_usd": "0.0002068",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 2973,
+      "output_tokens": 244,
+      "cost_usd": "0.0015796",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 1833,
+      "output_tokens": 218,
+      "cost_usd": "0.001082",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "input_tokens": 2122,
+      "output_tokens": 276,
+      "cost_usd": "0.0012904",
+      "model": "gpt-4.1-mini-2025-04-14"
+    }
+  ],
+  "provider_attempts": 20,
+  "finished_at": "2026-10-06T23:34:43.068992+00:00",
+  "cost_estimate_note": "Observed-token estimate at configured standard rates; cached-input discounts are not applied and account billing has not been reconciled.",
+  "portable_predictions_note": "Passage text is omitted; resolve recorded IDs and page offsets against the frozen corpus."
+}

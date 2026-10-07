@@ -1,0 +1,58 @@
+{
+  "benchmark": {
+    "attempted_queries": 50,
+    "answerable_queries": 40,
+    "answered_queries": 38,
+    "service_errors": 0,
+    "refusals": 12,
+    "answer_coverage": 0.95,
+    "negative_queries": 10,
+    "correct_negative_status": 8,
+    "negative_status_accuracy": 0.8,
+    "assessed_claims": 105,
+    "supported_claims": 105,
+    "claim_faithfulness": 1.0,
+    "judgment_coverage": 1.0,
+    "citation_validity": 1.0
+  },
+  "observed_benchmark_cost_usd": "0.1621644",
+  "benchmark_cost_including_unknown_reservations_usd": "0.1621644",
+  "smoke_cost_usd": "0.0146208",
+  "total_test_cost_usd": "0.1767852",
+  "remaining_approved_budget_usd": "1.8232148",
+  "provider_attempts": 200,
+  "status_counts": {
+    "answered": 38,
+    "ambiguous_version": 3,
+    "out_of_scope": 7,
+    "ambiguous_authority": 2
+  },
+  "mean_latency_seconds": 7.86791132800281,
+  "p95_latency_seconds": 14.332492999965325,
+  "mismatches": [
+    {
+      "item_id": "benchmark-osfi-b13-07",
+      "expected": "answered",
+      "actual": "ambiguous_version"
+    },
+    {
+      "item_id": "benchmark-osfi-cg-05",
+      "expected": "answered",
+      "actual": "out_of_scope"
+    },
+    {
+      "item_id": "benchmark-negative-05",
+      "expected": "insufficient_evidence",
+      "actual": "out_of_scope"
+    },
+    {
+      "item_id": "benchmark-negative-06",
+      "expected": "insufficient_evidence",
+      "actual": "out_of_scope"
+    }
+  ],
+  "judge_errors": [],
+  "cost_estimate_note": "Observed-token estimate at configured standard rates; cached-input discounts are not applied and account billing has not been reconciled.",
+  "human_audit_count": 0,
+  "faithfulness_method": "Same-model separate-call estimate over supplied claim units; not independent factual-accuracy validation."
+}
